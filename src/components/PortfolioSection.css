@@ -1,0 +1,171 @@
+/* Portfolio section container */
+#portfolio-section {
+    width: 100%;
+    padding: 40px 20px 20px;
+    position: relative;
+}
+
+/* Section title */
+#portfolio-section .section-title {
+    text-align: center;
+    padding: 0 0 30px 0;
+    margin-top: 0;
+}
+
+#portfolio-section .section-title h2 {
+    font-size: 1.6rem;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+/* Portfolio Grid - 2 columns on desktop */
+.portfolio-grid {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+/* Portfolio Items - Sharp, minimal cards */
+.portfolio-item {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    transition: border-color 0.3s ease;
+}
+
+.portfolio-item:hover {
+    border-color: #fff;
+}
+
+.portfolio-image {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    filter: grayscale(30%);
+}
+
+.portfolio-item:hover .portfolio-image img {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+/* Overlay Effect */
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-overlay h3 {
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.portfolio-overlay p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.view-project {
+    display: inline-block;
+    padding: 6px 14px;
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #fff;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    width: fit-content;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.view-project:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Responsive Design - Keep phone UI compact */
+@media (max-width: 768px) {
+    #portfolio-section {
+        padding: 30px 15px 15px;
+    }
+
+    #portfolio-section .section-title {
+        padding: 0 0 20px 0;
+    }
+
+    #portfolio-section .section-title h2 {
+        font-size: 1.3rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .portfolio-item {
+        border-radius: 2px;
+    }
+
+    .portfolio-image {
+        height: 100px;
+    }
+
+    .portfolio-overlay {
+        opacity: 1;
+        padding: 8px;
+    }
+
+    .portfolio-overlay h3 {
+        font-size: 0.75rem;
+        margin-bottom: 4px;
+    }
+
+    .portfolio-overlay p {
+        display: none;
+    }
+
+    .view-project {
+        padding: 3px 8px;
+        font-size: 0.6rem;
+    }
+}

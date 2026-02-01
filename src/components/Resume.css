@@ -1,0 +1,137 @@
+/* Resume section container */
+#resume {
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 20px 0;
+  position: relative;
+}
+
+/* Section title */
+#resume .section-title {
+  text-align: center;
+  padding: 0 0 40px 0;
+  margin-top: 10px;
+}
+
+#resume .section-title h2 {
+  font-size: 2.5rem;
+  color: #6c63ff;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 10px 0;
+  position: relative;
+  display: inline-block;
+  padding: 10px 0;
+}
+
+/* Resume content */
+.resume-grid {
+  width: 100%;
+  max-width: 800px;
+  /* Single column width */
+  margin: 20px auto 100px;
+  background-color: #2a2a2a;
+  padding: 60px 40px;
+  border-radius: 25px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Headings */
+.resume-skills h2 {
+  color: #6c63ff;
+  font-size: 24px;
+  margin-bottom: 30px;
+  margin-top: 0;
+  /* Reset top margin for first element */
+  position: relative;
+  z-index: 10;
+}
+
+/* Skills Section */
+.resume-skills {
+  padding: 0;
+  /* Removed padding since it's single column */
+  width: 100%;
+}
+
+.web-title {
+  margin-top: 40px;
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill-item span {
+  color: #fff;
+  font-size: 14px;
+}
+
+.skill-bar-bg {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.skill-bar {
+  height: 100%;
+  background: #6c63ff;
+  border-radius: 2px;
+  transition: width 0.8s ease;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #resume {
+    padding: 60px 12px 0;
+    min-height: auto;
+  }
+
+  #resume .section-title {
+    padding: 0 0 24px 0;
+    margin-top: 0;
+  }
+
+  #resume .section-title h2 {
+    font-size: 1.8rem;
+  }
+
+  .resume-grid {
+    padding: 24px 16px;
+    margin: 0 0 20px;
+    border-radius: 16px;
+  }
+
+  .resume-skills h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .web-title {
+    margin-top: 30px;
+  }
+
+  .skill-list {
+    gap: 16px;
+  }
+
+  .skill-item span {
+    font-size: 13px;
+  }
+
+  .skill-bar-bg {
+    height: 6px;
+  }
+}

@@ -1,0 +1,128 @@
+/* Portfolio section container */
+#portfolio {
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 20px 0;
+    position: relative;
+}
+
+/* Section title */
+#portfolio .section-title {
+    text-align: center;
+    padding: 0 0 40px 0;
+    margin-top: 10px;
+}
+
+#portfolio .section-title h2 {
+    font-size: 2.5rem;
+    color: #6c63ff;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 10px 0;
+    position: relative;
+    display: inline-block;
+    padding: 10px 0;
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto 100px;
+    background-color: #2b343c;
+    padding: 60px 40px;
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Portfolio Items */
+.portfolio-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #1a1e23;
+}
+
+.portfolio-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Overlay Effect */
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(108, 99, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+    text-align: center;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-item:hover .portfolio-image img {
+    transform: scale(1.1);
+}
+
+.portfolio-overlay h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.portfolio-overlay p {
+    color: #fff;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.view-project {
+    padding: 10px 20px;
+    background: #fff;
+    color: #6c63ff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.view-project:hover {
+    background: #2b343c;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+    }
+
+    .portfolio-image {
+        height: 200px;
+    }
+} 
