@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { auth, isFirebaseConfigured } from '../../config/firebase';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import ProjectManager from './ProjectManager';
 import BlogManager from './BlogManager';
 import ProfileManager from './ProfileManager';
@@ -9,19 +11,49 @@ const AdminDashboard = () => {
     const [activeTab, setActiveTab] = useState('projects');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [userEmail, setUserEmail] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
+        // Check localStorage first
         const localAuth = localStorage.getItem('isAdminLoggedIn');
-        if (localAuth === 'true') {
-            setIsAuthenticated(true);
+
+        if (isFirebaseConfigured && auth) {
+            // Check Firebase Auth state
+            const unsubscribe = onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    setIsAuthenticated(true);
+                    setUserEmail(user.email);
+                    setLoading(false);
+                } else if (localAuth === 'true') {
+                    setIsAuthenticated(true);
+                    setUserEmail('admin@portfolio.com');
+                    setLoading(false);
+                } else {
+                    navigate('/login');
+                }
+            });
+            return () => unsubscribe();
         } else {
-            navigate('/login');
+            // No Firebase, check localStorage
+            if (localAuth === 'true') {
+                setIsAuthenticated(true);
+                setUserEmail('admin@portfolio.com');
+            } else {
+                navigate('/login');
+            }
+            setLoading(false);
         }
-        setLoading(false);
     }, [navigate]);
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
+        if (isFirebaseConfigured && auth) {
+            try {
+                await signOut(auth);
+            } catch (error) {
+                console.log('Signout error:', error);
+            }
+        }
         localStorage.removeItem('isAdminLoggedIn');
         navigate('/login');
     };
@@ -44,7 +76,7 @@ const AdminDashboard = () => {
             <header className="admin-header">
                 <h1>Admin Dashboard</h1>
                 <div className="admin-user">
-                    <span>admin@portfolio.com</span>
+                    <span>{userEmail}</span>
                     <button onClick={handleLogout} className="logout-btn">Logout</button>
                 </div>
             </header>

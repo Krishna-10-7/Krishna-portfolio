@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { auth, isFirebaseConfigured } from '../../config/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import './Admin.css';
 
 const Login = () => {
@@ -14,12 +16,43 @@ const Login = () => {
         setError('');
         setLoading(true);
 
-        // Local authentication
+        // Try Firebase Auth if configured
+        if (isFirebaseConfigured && auth) {
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                localStorage.setItem('isAdminLoggedIn', 'true');
+                navigate('/admin');
+                setLoading(false);
+                return;
+            } catch (firebaseError) {
+                console.log('Firebase auth error:', firebaseError.code);
+                if (firebaseError.code === 'auth/invalid-email') {
+                    setError('Invalid email format');
+                    setLoading(false);
+                    return;
+                } else if (firebaseError.code === 'auth/user-not-found') {
+                    setError('User not found in Firebase');
+                    setLoading(false);
+                    return;
+                } else if (firebaseError.code === 'auth/wrong-password' || firebaseError.code === 'auth/invalid-credential') {
+                    setError('Incorrect password');
+                    setLoading(false);
+                    return;
+                }
+                // For other errors, try local fallback
+            }
+        }
+
+        // Local authentication fallback
         if (email === 'admin@portfolio.com' && password === 'admin123') {
             localStorage.setItem('isAdminLoggedIn', 'true');
             navigate('/admin');
         } else {
-            setError('Invalid credentials. Use admin@portfolio.com / admin123');
+            if (!isFirebaseConfigured) {
+                setError('Use: admin@portfolio.com / admin123');
+            } else {
+                setError('Invalid credentials');
+            }
         }
 
         setLoading(false);
@@ -37,7 +70,7 @@ const Login = () => {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            placeholder="admin@portfolio.com"
+                            placeholder="Enter your email"
                             required
                         />
                     </div>
@@ -55,9 +88,11 @@ const Login = () => {
                         {loading ? 'Logging in...' : 'Login'}
                     </button>
                 </form>
-                <p className="login-hint">
-                    Default: admin@portfolio.com / admin123
-                </p>
+                {!isFirebaseConfigured && (
+                    <p className="login-hint">
+                        Default: admin@portfolio.com / admin123
+                    </p>
+                )}
             </div>
         </div>
     );
