@@ -1,9 +1,18 @@
 /* Admin Dashboard - Minimal Dark Theme */
+/* Override global overflow:hidden for admin pages */
+body:has(.admin-dashboard),
+body:has(.login-container) {
+    overflow: auto !important;
+    height: auto !important;
+}
+
 .admin-dashboard {
     min-height: 100vh;
+    height: auto;
     background: #111;
     color: #fff;
-    overflow-y: auto;
+    overflow: visible;
+    position: relative;
 }
 
 .admin-header {
