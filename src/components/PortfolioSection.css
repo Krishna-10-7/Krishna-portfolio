@@ -130,7 +130,7 @@
 /* Responsive Design - Keep phone UI compact */
 @media (max-width: 768px) {
     #portfolio-section {
-        padding: 30px 15px 15px;
+        padding: 80px 15px 15px;
     }
 
     #portfolio-section .section-title {
