@@ -7,12 +7,16 @@
 
 /* Section title */
 #portfolio-section .section-title {
+    display: block;
     text-align: center;
     padding: 0 0 30px 0;
     margin-top: 0;
+    position: relative;
+    z-index: 10;
 }
 
 #portfolio-section .section-title h2 {
+    display: block;
     font-size: 1.6rem;
     color: #fff;
     font-weight: 600;
