@@ -79,26 +79,26 @@ const ContactSection = () => {
                             <div className="contact-icon">
                                 <i className="fas fa-globe"></i>
                             </div>
-                            <a href="https://your-website.com" target="_blank" rel="noopener noreferrer">
-                                your-website.com
+                            <a href="https://krishnapandey.dev" target="_blank" rel="noopener noreferrer">
+                                krishnapandey.dev
                             </a>
                         </div>
 
                         <div className="contact-item">
                             <div className="contact-icon">
-                                <i className="fab fa-linkedin"></i>
+                                <i className="fab fa-github"></i>
                             </div>
-                            <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">
-                                LinkedIn
+                            <a href="https://github.com/Krishna-10-7" target="_blank" rel="noopener noreferrer">
+                                GitHub
                             </a>
                         </div>
 
                         <div className="contact-item">
                             <div className="contact-icon">
-                                <i className="fab fa-facebook"></i>
+                                <i className="fab fa-instagram"></i>
                             </div>
-                            <a href="https://facebook.com/your-profile" target="_blank" rel="noopener noreferrer">
-                                Facebook
+                            <a href="https://instagram.com/_krishna_o4" target="_blank" rel="noopener noreferrer">
+                                Instagram
                             </a>
                         </div>
                     </div>
@@ -106,7 +106,7 @@ const ContactSection = () => {
                     {/* Right side - Contact Form */}
                     <div className="contact-form">
                         <h3>How Can I <span>Help You?!</span></h3>
-                        
+
                         {status === 'success' && (
                             <div className="success-message">
                                 Message sent successfully! I'll get back to you soon.
@@ -121,46 +121,46 @@ const ContactSection = () => {
 
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">
-                                <input 
-                                    type="text" 
+                                <input
+                                    type="text"
                                     name="name"
-                                    placeholder="Full Name" 
+                                    placeholder="Full Name"
                                     value={formData.name}
                                     onChange={handleInputChange}
-                                    required 
+                                    required
                                 />
                             </div>
                             <div className="form-group">
-                                <input 
-                                    type="email" 
+                                <input
+                                    type="email"
                                     name="email"
-                                    placeholder="Email Address" 
+                                    placeholder="Email Address"
                                     value={formData.email}
                                     onChange={handleInputChange}
-                                    required 
+                                    required
                                 />
                             </div>
                             <div className="form-group">
-                                <input 
-                                    type="text" 
+                                <input
+                                    type="text"
                                     name="subject"
-                                    placeholder="Subject" 
+                                    placeholder="Subject"
                                     value={formData.subject}
                                     onChange={handleInputChange}
-                                    required 
+                                    required
                                 />
                             </div>
                             <div className="form-group">
-                                <textarea 
+                                <textarea
                                     name="message"
-                                    placeholder="Message" 
+                                    placeholder="Message"
                                     value={formData.message}
                                     onChange={handleInputChange}
                                     required
                                 ></textarea>
                             </div>
-                            <button 
-                                type="submit" 
+                            <button
+                                type="submit"
                                 className={`send-message ${loading ? 'loading' : ''}`}
                                 disabled={loading}
                             >
