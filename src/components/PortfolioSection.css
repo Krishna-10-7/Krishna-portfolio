@@ -138,34 +138,37 @@
     }
 
     .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        max-width: 400px;
     }
 
     .portfolio-item {
-        border-radius: 2px;
+        border-radius: 4px;
     }
 
     .portfolio-image {
-        height: 100px;
+        height: 180px;
     }
 
     .portfolio-overlay {
         opacity: 1;
-        padding: 8px;
+        padding: 12px;
     }
 
     .portfolio-overlay h3 {
-        font-size: 0.75rem;
-        margin-bottom: 4px;
+        font-size: 1rem;
+        margin-bottom: 6px;
     }
 
     .portfolio-overlay p {
-        display: none;
+        display: block;
+        font-size: 0.85rem;
+        margin-bottom: 8px;
     }
 
     .view-project {
-        padding: 3px 8px;
-        font-size: 0.6rem;
+        padding: 6px 14px;
+        font-size: 0.75rem;
     }
 }
